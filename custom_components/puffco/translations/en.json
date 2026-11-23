@@ -1,0 +1,143 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "Select Puffco",
+        "data": {
+          "address": "Device"
+        }
+      },
+      "pair": {
+        "title": "Pair {name}",
+        "description": "Hold the button on the Puffco until the logo glows **blue** (pairing mode). Close the Puffco app on your phone first, only one connection is possible at a time. Then press **Submit**."
+      }
+    },
+    "error": {
+      "not_in_range": "Puffco is not currently seen over Bluetooth. Wake it and move it closer.",
+      "cannot_connect": "Could not connect. Is the Puffco app still connected?",
+      "not_paired": "No answer – probably not paired. Put it in pairing mode (blue logo) and retry.",
+      "auth_failed": "Authentication failed (maybe new firmware)."
+    },
+    "abort": {
+      "already_configured": "Already configured.",
+      "no_devices_found": "No Puffco found. Wake it and wait a moment.",
+      "not_supported": "Device not supported."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polling",
+        "data": {
+          "scan_interval": "Idle poll interval (seconds)"
+        },
+        "description": "During a session Home Assistant polls every 15 seconds. Each poll briefly blocks the Puffco app."
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "battery": {
+        "name": "Battery"
+      },
+      "charge_state": {
+        "name": "Charge state",
+        "state": {
+          "charging": "Charging",
+          "topping_up": "Topping up",
+          "full": "Full",
+          "paused_temperature": "Paused (temperature)",
+          "not_charging": "Not charging"
+        }
+      },
+      "charge_time_to_full": {
+        "name": "Time to full"
+      },
+      "heater_temperature": {
+        "name": "Chamber temperature"
+      },
+      "state": {
+        "name": "Status",
+        "state": {
+          "init": "Starting",
+          "master_off": "Off",
+          "sleep": "Sleep",
+          "idle": "Idle",
+          "temp_select": "Selecting profile",
+          "preheat": "Preheating",
+          "active": "Session active",
+          "fade": "Fading",
+          "version_display": "Showing version",
+          "battery_display": "Showing battery",
+          "factory_test": "Factory test",
+          "bonding": "Pairing mode"
+        }
+      },
+      "session_remaining": {
+        "name": "Session remaining"
+      },
+      "active_profile": {
+        "name": "Active profile"
+      },
+      "profile_temperature": {
+        "name": "Profile temperature"
+      },
+      "profile_duration": {
+        "name": "Profile duration"
+      },
+      "dabs_total": {
+        "name": "Total dabs"
+      },
+      "dabs_per_day": {
+        "name": "Dabs per day"
+      },
+      "dabs_remaining": {
+        "name": "Dabs remaining"
+      },
+      "chamber": {
+        "name": "Chamber",
+        "state": {
+          "none": "No chamber",
+          "standard": "Standard",
+          "xl_v1": "3D XL (V1)",
+          "three_d": "3D",
+          "three_d_xl": "3D XL",
+          "proxy_3d": "Proxy 3D"
+        }
+      }
+    },
+    "binary_sensor": {
+      "heating": {
+        "name": "Heating"
+      },
+      "charging": {
+        "name": "Charging"
+      },
+      "reachable": {
+        "name": "Reachable"
+      }
+    },
+    "button": {
+      "start_heat": {
+        "name": "Start heat cycle"
+      },
+      "stop_heat": {
+        "name": "Stop heat cycle"
+      },
+      "refresh": {
+        "name": "Refresh now"
+      }
+    },
+    "switch": {
+      "lantern": {
+        "name": "Lantern"
+      }
+    },
+    "select": {
+      "start_profile": {
+        "name": "Start profile"
+      }
+    }
+  }
+}

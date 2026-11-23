@@ -1,0 +1,143 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "Puffco auswählen",
+        "data": {
+          "address": "Gerät"
+        }
+      },
+      "pair": {
+        "title": "{name} koppeln",
+        "description": "Halte den Knopf am Puffco gedrückt, bis das Logo **blau** leuchtet (Kopplungsmodus). Schließe vorher die Puffco-App auf dem Handy, da nur eine Verbindung gleichzeitig möglich ist. Dann auf **Senden** tippen."
+      }
+    },
+    "error": {
+      "not_in_range": "Puffco wird gerade nicht über Bluetooth gesehen. Gerät aufwecken und näher an Home Assistant bringen.",
+      "cannot_connect": "Verbindung fehlgeschlagen. Ist die Puffco-App noch verbunden?",
+      "not_paired": "Der Puffco antwortet nicht – wahrscheinlich nicht gekoppelt. Logo blau leuchten lassen und erneut versuchen.",
+      "auth_failed": "Anmeldung am Puffco fehlgeschlagen (evtl. neue Firmware)."
+    },
+    "abort": {
+      "already_configured": "Dieser Puffco ist schon eingerichtet.",
+      "no_devices_found": "Kein Puffco gefunden. Gerät aufwecken und kurz warten.",
+      "not_supported": "Gerät wird nicht unterstützt."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Abfrage",
+        "data": {
+          "scan_interval": "Abfrageintervall im Ruhezustand (Sekunden)"
+        },
+        "description": "Während einer Session fragt Home Assistant alle 15 Sekunden ab. Bei jeder Abfrage ist die Puffco-App kurz blockiert."
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "battery": {
+        "name": "Akku"
+      },
+      "charge_state": {
+        "name": "Ladestatus",
+        "state": {
+          "charging": "Lädt",
+          "topping_up": "Lädt nach",
+          "full": "Voll",
+          "paused_temperature": "Pause (Temperatur)",
+          "not_charging": "Lädt nicht"
+        }
+      },
+      "charge_time_to_full": {
+        "name": "Voll geladen in"
+      },
+      "heater_temperature": {
+        "name": "Kammertemperatur"
+      },
+      "state": {
+        "name": "Status",
+        "state": {
+          "init": "Startet",
+          "master_off": "Aus",
+          "sleep": "Schlafmodus",
+          "idle": "Bereit",
+          "temp_select": "Profilauswahl",
+          "preheat": "Heizt vor",
+          "active": "Session läuft",
+          "fade": "Klingt aus",
+          "version_display": "Zeigt Version",
+          "battery_display": "Zeigt Akku",
+          "factory_test": "Werkstest",
+          "bonding": "Kopplungsmodus"
+        }
+      },
+      "session_remaining": {
+        "name": "Session-Restzeit"
+      },
+      "active_profile": {
+        "name": "Aktives Profil"
+      },
+      "profile_temperature": {
+        "name": "Profil-Temperatur"
+      },
+      "profile_duration": {
+        "name": "Profil-Dauer"
+      },
+      "dabs_total": {
+        "name": "Dabs gesamt"
+      },
+      "dabs_per_day": {
+        "name": "Dabs pro Tag"
+      },
+      "dabs_remaining": {
+        "name": "Dabs bis Akku leer"
+      },
+      "chamber": {
+        "name": "Kammer",
+        "state": {
+          "none": "Keine Kammer",
+          "standard": "Standard",
+          "xl_v1": "3D XL (V1)",
+          "three_d": "3D",
+          "three_d_xl": "3D XL",
+          "proxy_3d": "Proxy 3D"
+        }
+      }
+    },
+    "binary_sensor": {
+      "heating": {
+        "name": "Heizt"
+      },
+      "charging": {
+        "name": "Lädt"
+      },
+      "reachable": {
+        "name": "Erreichbar"
+      }
+    },
+    "button": {
+      "start_heat": {
+        "name": "Heizen starten"
+      },
+      "stop_heat": {
+        "name": "Heizen stoppen"
+      },
+      "refresh": {
+        "name": "Jetzt abfragen"
+      }
+    },
+    "switch": {
+      "lantern": {
+        "name": "Stimmungslicht"
+      }
+    },
+    "select": {
+      "start_profile": {
+        "name": "Startprofil"
+      }
+    }
+  }
+}
