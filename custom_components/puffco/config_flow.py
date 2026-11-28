@@ -41,7 +41,8 @@ _NAME_PREFIXES = ("peak", "puffco")
 def _is_puffco(info: BluetoothServiceInfoBleak) -> bool:
     if LORAX_SERVICE_UUID in [u.lower() for u in info.service_uuids]:
         return True
-    return (info.name or "").lower().startswith(_NAME_PREFIXES)
+    name = (info.name or "").lower()
+    return any(part in name for part in _NAME_PREFIXES)
 
 
 class PuffcoConfigFlow(ConfigFlow, domain=DOMAIN):
@@ -86,6 +87,15 @@ class PuffcoConfigFlow(ConfigFlow, domain=DOMAIN):
             if info.address in current or not _is_puffco(info):
                 continue
             self._discovered[info.address] = info
+        if not self._discovered:
+            # Renamed devices ("Erol's ...") may not match by name or UUID:
+            # fall back to every connectable device that advertises a name.
+            for info in async_discovered_service_info(self.hass, connectable=True):
+                if info.address in current or not info.name:
+                    continue
+                if info.name.replace("-", ":").upper() == info.address.upper():
+                    continue
+                self._discovered[info.address] = info
         if not self._discovered:
             return self.async_abort(reason="no_devices_found")
 
